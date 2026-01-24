@@ -16,7 +16,7 @@ jobs:
       - name: Ensure browsers are installed
         run: playwright install --with-deps
       - name: Run tests
-        run: pytest --tracing retain-on-failure 
+        run: pytest --tracing on
       - name: Upload Traces
         uses: actions/upload-artifact@v4
         if: always()

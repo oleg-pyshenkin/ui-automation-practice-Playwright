@@ -9,6 +9,8 @@ class LoginPage(BasePage):
         self.login_button = page.locator("button[type='submit']")
         self.logout_button = page.get_by_role("link", name="Logout")
         self.success_message = page.locator("#flash")
+        self.error_message = page.locator("#flash")
+        
 
     def navigate(self):
         super().navigate("/login")

@@ -14,6 +14,12 @@ A professional-grade test automation framework built with **Python** and **Playw
 * **Robust Assertions:** Leveraged Playwright's `expect` library with auto-waiting and fuzzy matching (`ignore_case=True`) to reduce test flakiness.
 * **Negative Testing:** Includes verification for failed login scenarios and error message validation.
 
+## Project Structure
+- `pages/`: Contains Page Object classes (logic and locators).
+- `tests/`: Contains test scripts organized by feature.
+- `requirements.txt`: List of project dependencies.
+- `.gitignore`: Files and folders to be excluded from Git.
+
 ## Installation
 1. Clone the repo: `git clone <your-repo-link>`
 2. Create venv: `python3 -m venv venv`

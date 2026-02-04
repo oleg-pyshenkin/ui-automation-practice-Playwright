@@ -33,3 +33,17 @@ def test_api_login_wrong_password():
     with allure.step("Verify status Code"):
         assert "login" in response.url
         assert "Your password is invalid!" in response.text
+
+@allure.feature("API Health")
+def test_api_health_check():
+    url = "https://httpbin.org/get"
+
+    with allure.step("Send GET request to health check enpoint"):
+        response = requests.get(url)
+
+    with allure.step("Verify response structure and headers"):
+        assert response.status_code == 200
+        data = response.json()
+        assert "origin" in data
+        assert "url" in data
+        assert response.headers["Content-Type"] == "application/json"

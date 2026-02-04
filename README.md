@@ -1,33 +1,35 @@
-# Playwright UI Automation Practice
+# Hybrid (UI & API) Automation Framework
 
-A professional-grade test automation framework built with **Python** and **Playwright**, following the **Page Object Model (POM)** design pattern.
+A professional-grade test automation framework built with **Python**, **Playwright**, and **Requests**, following the **Page Object Model (POM)** design pattern.
 
 ## Tech Stack
 * **Language:** Python 3.13+
 * **Framework:** Pytest
-* **Tool:** Playwright
+* **UI Tool:** Playwright
+* **API Tool:** Requests
+* **Reporting:** Allure Report
 * **Pattern:** Page Object Model (POM)
 
 ## Key Features
-* **Scalable Architecture:** Implemented Page Object Model to separate page logic from test scripts.
-* **Shared Context:** Utilized `conftest.py` and Pytest fixtures for efficient setup/teardown.
-* **Robust Assertions:** Leveraged Playwright's `expect` library with auto-waiting and fuzzy matching (`ignore_case=True`) to reduce test flakiness.
-* **Negative Testing:** Includes verification for failed login scenarios and error message validation.
+* **Hybrid Testing:** Combines fast API validation for backend logic with Playwright for end-to-end UI flows.
+* **Page Object Model:** Separates page logic from test scripts for high maintainability.
+* **Advanced Reporting:** Integrated **Allure Report** with automatic **screenshots on failure** to simplify debugging.
+* **Robust Assertions:** Leveraged Playwright's `expect` library with auto-waiting and API response content validation.
 
 ## Project Structure
-- `pages/`: Contains Page Object classes (logic and locators).
-- `tests/`: Contains test scripts organized by feature.
-- `requirements.txt`: List of project dependencies.
-- `.gitignore`: Files and folders to be excluded from Git.
+- `pages/`: Page Object classes (logic and locators).
+- `tests/ui/`: UI-specific test scripts.
+- `tests/api/`: Backend API test scripts.
+- `conftest.py`: Global fixtures and Allure hooks (screenshot capture).
+- `requirements.txt`: Project dependencies.
 
 ## Installation
 1. Clone the repo: `git clone <your-repo-link>`
-2. Create venv: `python3 -m venv venv`
-3. Activate venv: `source venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
-5. Install Playwright browsers: `playwright install`
+2. Create & activate venv: `python3 -m venv venv && source venv/bin/activate`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Install Playwright browsers: `playwright install`
 
-## Running Tests
-Run all tests in headless mode:
+## Running Tests & Reporting
+Run all tests and generate results:
 ```bash
-pytest
+python3 -m pytest --alluredir=allure-results

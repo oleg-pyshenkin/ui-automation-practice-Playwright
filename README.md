@@ -1,3 +1,5 @@
+![UI and API Tests](https://github.com/oleg-pyshenkin/ui-automation-practice-Playwright/actions/workflows/python-tests.yml/badge.svg)
+
 # Hybrid (UI & API) Automation Framework
 
 A professional-grade test automation framework built with **Python**, **Playwright**, and **Requests**, following the **Page Object Model (POM)** design pattern.

@@ -1,5 +1,7 @@
 import pytest
 import allure
+import sqlite3
+import os
 from pages.login_page import LoginPage
 from playwright.sync_api import sync_playwright
 
@@ -28,3 +30,21 @@ def pytest_runtest_makereport(item, call):
         if page:
             screenshot = page.screenshot(full_page=True)
             allure.attach(screenshot, name="screenshot", attachment_type=allure.attachment_type.PNG)
+
+
+@pytest.fixture(scope='session')
+def db_connection():
+    db_path = "test_automation.db"
+    connection = sqlite3.connect(db_path)
+    cursor = connection.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users 
+        (id INTEGER PRIMARY KEY, name TEXT, email TEXT)
+    ''')
+    connection.commit()
+
+    yield connection
+    connection.close()
+    if os.path.exists(db_path):
+        os.remove(db_path)
+        print("\n[Cleanup] Database file deleted.")
